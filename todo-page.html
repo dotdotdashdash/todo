@@ -1,91 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your To Do list</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header>
-    <div class="container ">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <!-- <img src="images/todo_logo_200x200.png" alt="Kerala Tourism Logo" width="103" height="40"> -->
-          <span class="me-3 btn border border-primary  text-primary fw-bold " id="date-div"></span>
-        </a>
-  
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        </ul>
-      </header>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your To Do list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 
-  <div class="b-example-divider"></div>
+  <body onload="getJsonData(0)">
+    <header>
+      <div class="container ">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <!-- <img src="images/todo_logo_200x200.png" alt="Kerala Tourism Logo" width="103" height="40"> -->
+            <span class="me-3 btn border border-primary  text-primary fw-bold " id="date-div"></span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          </ul>
+        </header>
+      </div>
+    </header>
 
-  <div class="container mt-4">
-    <div class="row gx-5">
+    <div class="b-example-divider"></div>
 
-      <div class="col-sm-2 shadow-sm border rounded bg-opacity-25 bg-secondary" style="height: 15rem;" >
-        <nav class="nav flex-column align-middle" >
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link disabled">Disabled</a>
-        </nav>
+    <div class="container mt-4">
+      <div class="row gx-5">
+
+        <div class="col-sm-3  shadow-sm border rounded bg-opacity-25 bg-secondary" style="height: 15rem;" >
+          <nav class=" nav flex-column align-middle " >
+            <br>
+            <select class="rounded nav-link text-black justify-content-center " id="myselect" onchange="getJsonData(parseInt(this.value))">
+              <option value=null>Choose Status</option>
+              <option value=true>Finished</option>
+              <option value=false>Not Finished</option>
+            </select>
+            <!-- <a class=" justify-content-center nav-link active" aria-current="page" href="#">Active</a> -->
+            <!-- <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a> -->
+            <br>
+            <select class="rounded nav-link text-black justify-content-center " id="myselect" onchange="getJsonData(parseInt(this.value))">
+              <option value="0">Choose User</option>
+              <option value="1">User 1</option>
+              <option value="2">User 2</option>
+              <option value="3">User 3</option>
+              <option value="4">User 4</option>
+              <option value="5">User 5</option>
+              <option value="6">User 6</option>
+              <option value="7">User 7</option>
+              <option value="8">User 8</option>
+              <option value="9">User 9</option>
+              <option value="10">User 10</option>
+            </select>
+          </nav>
+        </div>
+
+        <div class = "col-sm-9 bg">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">user</th>
+                <th scope="col">Task Title</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="todoBody">
+
+              <!-- Populate JSON data here -->
+
+            </tbody>
+          </table>
+        </div>
+
+        <div id="display"></div>
+
       </div>
 
-      <div class="col-sm-1"></div>
-
-      <div class = "col-sm-9 bg">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">user</th>
-              <th scope="col">Task Title</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody id="todoBody">
-
-            <!-- Populate JSON data here -->
-
-          </tbody>
-        </table>
-      </div>
-
-      <div id="display"></div>
-
     </div>
 
-  </div>
+    <!-- JS script for clock. -->
+    <script type="text/javascript">
+      const dateDiv = document.getElementById('date-div');
 
-  <!-- JS script for clock. -->
-  <script type="text/javascript">
-    const dateDiv = document.getElementById('date-div');
+      function myDateFunction() {
+          const now = new Date();
+          const nowStr = now.toLocaleTimeString('en-US');
+          dateDiv.innerHTML = nowStr;
+      }
 
-    function myDateFunction() {
-        const now = new Date();
-        const nowStr = now.toLocaleTimeString('en-US');
-        dateDiv.innerHTML = nowStr;
-    }
+      setInterval(myDateFunction, 1000);
 
-    setInterval(myDateFunction, 1000);
+      // Include this somewhere to show the date-time
+      // <span class="me-3 btn border border-light text-light fw-bold " id="date-div"></span>
+    </script>
 
-    // Include this somewhere to show the date-time
-    // <span class="me-3 btn border border-light text-light fw-bold " id="date-div"></span>
-  </script>
-
-  <!-- Bootstrap JS --> 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="./js/script.js"></script>
-  <script src="./js/fetch-data.js"></script>
-</body>
+    <!-- Bootstrap JS --> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/fetch-data.js"></script>
+  </body>
 </html>
