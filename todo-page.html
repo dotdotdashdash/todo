@@ -32,7 +32,14 @@
 
     <div class="container mt-4">
 
-      <div class="row gx-5 d-flex justify-content-center">
+      <div class="row">
+        <h3  class="display-5 d-flex fw-bold justify-content-center">Tasks</h3>
+        <input type="checkbox" name="" id="testCheck" >
+      </div>
+
+      <br>
+
+      <!-- <div class="row gx-5 d-flex justify-content-center">
         <ul class="nav justify-content-start">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Active</a>
@@ -48,10 +55,10 @@
           </li>
         </ul>
       </div>
-      <BR></BR>
+      <BR></BR> -->
       <div class="row gx-5 d-flex justify-content-center">
 
-        <!-- <div class="col-sm-3  shadow-sm  rounded bg-opacity-25 bg-secondary" style="height: 15rem;" >
+        <div class="col-md-3  shadow-sm  rounded bg-opacity-25 bg-secondary">
           <nav class=" nav flex-column align-middle " >
             <br>
             <h5>Filter:</h5>
@@ -60,6 +67,7 @@
               <option value=null>Choose Status</option>
               <option value=true>Finished</option>
               <option value=false>Not Finished</option>
+            </select>
             <br>
             <select class="rounded nav-link text-black justify-content-center " id="myselect" onchange="getJsonData(parseInt(this.value))">
               <option value="0">Choose User</option>
@@ -75,9 +83,9 @@
               <option value="10">User 10</option>
             </select>
           </nav>
-        </div> -->
+        </div>
 
-        <div class = "col-sm-10  bg rounded ">
+        <div class = "col-md-9  bg rounded ">
           <table class="table  table-striped table-hover ">
             <thead>
               <tr>

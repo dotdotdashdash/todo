@@ -42,3 +42,33 @@ function populate(info,user) {
 
   });
 }
+
+// function chec() {
+//   var p = document.getElementById("testCheck");
+//   console.log(p.checked)
+// }
+
+
+async function fiveTasks() {
+
+  var fiveDone = new Promise(function(resolve,reject) {
+    var p = document.getElementById("testCheck");
+    if(p.checked == true) {
+      console.log("lll")
+      return "Done";
+      resolve("Done")
+    }
+  });
+
+  // var res = await fiveDone;
+  // console.log(res);
+  // console.log("Final")
+}
+
+
+fiveTasks().then(
+  console.log() 
+  );
+
+
+console.log("Hi");

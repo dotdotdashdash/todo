@@ -24,7 +24,6 @@ function alert(message, type) {
   
     alertPlaceholder.append(wrapper)
   } else {
-    console.log("dddddd")
     alertPlaceholder.removeChild(alertPlaceholder.lastChild)
 
   }
