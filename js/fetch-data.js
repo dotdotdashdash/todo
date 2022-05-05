@@ -16,16 +16,24 @@ function getJsonData(user) {
 
 
 function populate(info,user) {
-  console.log(user)
   info.forEach(element => {
 
+
     if(user == 0) {
-      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${element.completed}</td></tr>` ; 
-      console.log(taskRow);
+
+      let checkValue = element.completed ? "checked" : "" ;
+      let checkBox = `<input type="checkbox" ${checkValue}>`;
+  
+
+      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ; 
 
     } else if(user == element.userId) {
-      console.log(element.userId, element.id);
-      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${element.completed}</td></tr>` ;
+
+      let checkValue = element.completed ? "checked" : "" ;
+      let checkBox = `<input type="checkbox" ${checkValue}>`;
+
+      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;
+
     } else {
       return;
     }

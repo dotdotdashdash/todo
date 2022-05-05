@@ -33,10 +33,12 @@
     <div class="container mt-4">
       <div class="row gx-5">
 
-        <div class="col-sm-3  shadow-sm border rounded bg-opacity-25 bg-secondary" style="height: 15rem;" >
+        <div class="col-sm-3  shadow-sm  rounded bg-opacity-25 bg-secondary" style="height: 15rem;" >
           <nav class=" nav flex-column align-middle " >
             <br>
-            <select class="rounded nav-link text-black justify-content-center " id="myselect" onchange="getJsonData(parseInt(this.value))">
+            <h5>Filter:</h5>
+            <br>
+            <select class="rounded nav-link text-black justify-content-center " id="myselect" onchange="show(this.value)">
               <option value=null>Choose Status</option>
               <option value=true>Finished</option>
               <option value=false>Not Finished</option>
@@ -62,7 +64,7 @@
         </div>
 
         <div class = "col-sm-9 bg">
-          <table class="table table-hover">
+          <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
