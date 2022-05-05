@@ -1,4 +1,4 @@
-function getJsonData(user) {
+function getJsonData(user) {  //user number is given on function call
 
   var todoBody = document.getElementById("todoBody");
   todoBody.innerHTML = '';
@@ -14,61 +14,43 @@ function getJsonData(user) {
   xhttp.send();
 }
 
-
+// User count is compared to filter the row according to the chosen user(onload, 0 is sent as user)
 function populate(info,user) {
+
   info.forEach(element => {
-
-
-    if(user == 0) {
-
-      let checkValue = element.completed ? "checked" : "" ;
-      let checkBox = `<input class="form-check-input" type="checkbox" ${checkValue}>`;
-  
-
-      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ; 
-
+    
+    if(user == 0) { 
+      var taskRow = buildTableRow(element);   
     } else if(user == element.userId) {
-
-      let checkValue = element.completed ? "checked" : "" ;
-      let checkBox = `<input type="checkbox" ${checkValue}>`;
-
-      var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;
-
-    } else {
+      var taskRow = buildTableRow(element);  
+    } else {  
       return;
     }
-
     todoBody.innerHTML += taskRow;
-
   });
 }
 
-// function chec() {
-//   var p = document.getElementById("testCheck");
-//   console.log(p.checked)
-// }
+function buildTableRow(ele) {
 
+  let checkValue = ele.completed ? "checked" : "" ;
+  let disableValue = ele.completed ? "disabled" : "" ;
+  let checkBox = `<input onchange="fiveTasks(this);" ${disableValue} class="form-check-input" type="checkbox" ${checkValue}>`;
 
-async function fiveTasks() {
+  return `<tr> <th scope="row">${ele.id}</th><td>${ele.userId}</td><td>${ele.title}</td><td>${checkBox}</td></tr>` ;  
+}
 
-  var fiveDone = new Promise(function(resolve,reject) {
-    var p = document.getElementById("testCheck");
-    if(p.checked == true) {
-      console.log("lll")
-      return "Done";
+var completionCount = 0;
+async function fiveTasks(ele) {
+
+  var fiveDone = new Promise(function(resolve) {
+    //if element is checked, increment counter else decrement
+    (ele.checked) ? completionCount++ : completionCount-- ; 
+    console.log(`${completionCount}`);
+    if(completionCount == 5) {
+      completionCount = 0;
       resolve("Done")
     }
   });
-
-  // var res = await fiveDone;
-  // console.log(res);
-  // console.log("Final")
+  var res = await fiveDone;
+  console.log(res);
 }
-
-
-fiveTasks().then(
-  console.log() 
-  );
-
-
-console.log("Hi");
