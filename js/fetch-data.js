@@ -22,7 +22,7 @@ function populate(info,user) {
     if(user == 0) {
 
       let checkValue = element.completed ? "checked" : "" ;
-      let checkBox = `<input type="checkbox" ${checkValue}>`;
+      let checkBox = `<input class="form-check-input" type="checkbox" ${checkValue}>`;
   
 
       var taskRow = `<tr> <th scope="row">${element.id}</th><td>${element.userId}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ; 
