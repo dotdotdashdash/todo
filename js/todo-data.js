@@ -40,17 +40,21 @@ function buildTableRow(ele) {
 }
 
 var completionCount = 0;
+var taskSuccessDisplay =  document.getElementById('taskSuccessDisplay');
 async function fiveTasks(ele) {
 
   var fiveDone = new Promise(function(resolve) {
     //if element is checked, increment counter else decrement
     (ele.checked) ? completionCount++ : completionCount-- ; 
     // console.log(`${completionCount}`);
-    if(completionCount == 5) {
+    if(completionCount == 2) {
       completionCount = 0;
       resolve("Congrats. 5 Tasks have been Successfully Completed")
     }
   });
   var res = await fiveDone;
-  alert(res);
+  alertBox(res, 'success', taskSuccessDisplay); //alertbox is defined in script.js
+  setTimeout(() => {
+    closeAlertBox(taskSuccessDisplay);
+  }, 2000);
 }

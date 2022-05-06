@@ -27,19 +27,23 @@ var alertTrigger = document.getElementById('liveAlertBtn');
 
 if (alertTrigger) {
   alertTrigger.addEventListener('click', function () {
-    alertBox('Sign In with your credentials to view the TO-DO list!', 'danger')
+    alertBox('Sign In with your credentials to view the TO-DO list!', 'danger', alertPlaceholder,closeAlertBox);
   })
 }
 
-function alertBox(message, type) {
-  if(alertPlaceholder.innerText == "") {
+function alertBox(message, type, position,callToClose) {
+  if(position.innerText == "") {
     var wrapper = document.createElement('div');
     wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> &nbsp;' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
-    alertPlaceholder.append(wrapper)
+    position.append(wrapper);
   } else {
-    alertPlaceholder.removeChild(alertPlaceholder.lastChild)
+    try {
+      callToClose(position);
+    } catch (e) { }
   }
 }
 
-
+function closeAlertBox(position) {
+  position.removeChild(position.lastChild);
+}
