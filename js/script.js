@@ -34,7 +34,7 @@ if (alertTrigger) {
 function alertBox(message, type, position,callToClose) {
   if(position.innerText == "") {
     var wrapper = document.createElement('div');
-    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> &nbsp;' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    wrapper.innerHTML = '<div class="fw-bold  text-center alert alert-' + type + ' alert-dismissible" role="alert"> &nbsp; ' +  message + ' <button type="button" class="btn-close me-3" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
     position.append(wrapper);
   } else {

@@ -12,22 +12,27 @@
 
   <body onload="getJsonData(0)">
 
-    <header class="navbar navbar-light fixed-top bg-light justify-content-center py-3 mb-4 border-bottom">
-      <div class="container col-lg-9 ">
-        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <!-- <img src="images/KeralaTourismLogo.svg" alt="Kerala Tourism Logo" width="103" height="40"> -->
-          <span class="shadow me-3 btn border border-2 border-primary  text-primary fw-bold " id="date-div" style="width: 8rem;"></span>
-        </a>
+    <header>
+      <div class="container col-lg-9">
 
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link active fw-bold" aria-current="page">TO-DO List</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link">Sign Out</a></li>
-        </ul>
+        <div class="row">
+          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <div class="col-md-9"></div>
+            <div  class="col-md-3 ">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a href="#" class="nav-link active fw-bold " aria-current="page">TO-DO</a></li>
+                  <li class="nav-item"><a href="./index.html" class="nav-link">Sign Out</a></li>
+                </ul>
+            </div>
+          </header>
+        </div>
+
+        <div style="margin: 5% 0 0 20% ; width: 60%;" class="fixed-top" id="taskSuccessDisplay"></div>
+
       </div>
-      <div id="liveAlertPlaceholder"></div>
     </header>
 
-
+    
     <div class="b-example-divider"></div>
 
     <div class="container mt-4">
@@ -35,9 +40,7 @@
       <div class="row">
         <h3  class="display-5 d-flex fw-bold justify-content-center">Tasks</h3>
       </div>
-
       <br>
-
       <div class="row gx-5 d-flex justify-content-center">
 
         <!-- <div class="col-md-3  shadow-sm  rounded bg-opacity-25 bg-secondary">
@@ -124,22 +127,6 @@
           </div>
           <!-- Copyright -->
     </footer>
-
-    <!-- JS script for clock. -->
-    <script type="text/javascript">
-      const dateDiv = document.getElementById('date-div');
-
-      function myDateFunction() {
-          const now = new Date();
-          const nowStr = now.toLocaleTimeString('en-US');
-          dateDiv.innerHTML = nowStr;
-      }
-
-      setInterval(myDateFunction, 1000);
-
-      // Include this somewhere to show the date-time
-      // <span class="me-3 btn border border-light text-light fw-bold " id="date-div"></span>
-    </script>
 
     <!-- Bootstrap JS --> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

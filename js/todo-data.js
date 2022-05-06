@@ -47,7 +47,7 @@ async function fiveTasks(ele) {
     //if element is checked, increment counter else decrement
     (ele.checked) ? completionCount++ : completionCount-- ; 
     // console.log(`${completionCount}`);
-    if(completionCount == 2) {
+    if(completionCount == 5) {
       completionCount = 0;
       resolve("Congrats. 5 Tasks have been Successfully Completed")
     }
@@ -56,5 +56,5 @@ async function fiveTasks(ele) {
   alertBox(res, 'success', taskSuccessDisplay); //alertbox is defined in script.js
   setTimeout(() => {
     closeAlertBox(taskSuccessDisplay);
-  }, 2000);
+  }, 5000);
 }
