@@ -47,11 +47,11 @@
 
           <form id="signInForm" action="#" class="shadow-sm p-4 p-md-5 border rounded-3 bg-light shadow-sm">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="uName" placeholder="name@example.com">
+              <input oninput="signInButton.setCustomValidity('')" type="text" class="form-control" id="uName" placeholder="name@example.com">
               <label for="uName">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control" id="pwd" placeholder="Password">
+              <input oninput="signInButton.setCustomValidity('')" type="password" class="form-control" id="pwd" placeholder="Password">
               <label for="pwd">Password</label>
             </div>
             <div class="checkbox mb-3">
@@ -59,7 +59,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <button id="signInButton" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <hr class="my-4">
             <small class="text-muted"><p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?&nbsp;<a href="signup.html" class="link-primary">Sign Up</a></p></small>
           </form>

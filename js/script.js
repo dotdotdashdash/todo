@@ -7,17 +7,21 @@ if(signInForm) {
 function signIn(event) {
   var uName = document.getElementById('uName').value;
   var pwd = document.getElementById('pwd').value;
+  var signInButton = document.getElementById('signInButton')
 
   if(uName == "admin" && pwd == 12345) {
     event.preventDefault();
     location.replace("./todo-page.html");
   } else {
-    alert("Invalid Credentials");
+    // alert("Invalid Credentials");
+    signInButton.setCustomValidity('Invalid Credentials'); 
+    signInButton.reportValidity(); 
     event.preventDefault();
   }
 }
 
 
+//Not very important; included to show the lil alert box at the top of homepage that show up when TO-DO button is clicked
 var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 var alertTrigger = document.getElementById('liveAlertBtn');
 
@@ -31,11 +35,10 @@ function alertBox(message, type) {
   if(alertPlaceholder.innerText == "") {
     var wrapper = document.createElement('div');
     wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> &nbsp;' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-  
+
     alertPlaceholder.append(wrapper)
   } else {
     alertPlaceholder.removeChild(alertPlaceholder.lastChild)
-
   }
 }
 
