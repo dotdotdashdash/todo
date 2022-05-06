@@ -48,7 +48,7 @@ async function fiveTasks(ele) {
     // console.log(`${completionCount}`);
     if(completionCount == 5) {
       completionCount = 0;
-      resolve("Done")
+      resolve("Congrats. 5 Tasks have been Successfully Completed")
     }
   });
   var res = await fiveDone;
