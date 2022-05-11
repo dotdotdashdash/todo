@@ -21,6 +21,7 @@
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a  onclick="getData('null',0)" class="nav-link active fw-bold " aria-current="page">All Tasks</a></li>
                   <li class="nav-item"><a href="./index.html" class="nav-link">Sign Out</a></li>
+                  <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
                 </ul>
             </div>
           </header>
@@ -44,17 +45,19 @@
       <div class="row gx-5 d-flex justify-content-center">
 
         <div class="col-md-3  shadow-sm  rounded bg-opacity-25 bg-secondary">
-          <nav class=" nav flex-column align-middle mb-5" >
+          <nav class=" nav flex-column  mb-5" >
             <br>
             <h5>Filter:</h5>
             <br>
-            <select class="rounded nav-link text-black justify-content-center " id="statusSelect" onchange= "getData(this.value, parseInt(document.getElementById('userSelect').value))">
+            <label for="statusSelect"> Completion:</label>
+            <select   class="rounded fw-bold nav-link text-black justify-content-center " id="statusSelect" onchange= "getData(this.value, parseInt(document.getElementById('userSelect').value))">
               <option value=null>Choose Status</option>
               <option value=true>Finished</option>
               <option value=false>Not Finished</option>
             </select>
             <br>
-            <select class="rounded nav-link text-black justify-content-center " id="userSelect" onchange="getData(document.getElementById('statusSelect').value, parseInt(this.value))"> <!-- This value refers to the value selected as user -->
+            <label for="userSelect"> User:</label>
+            <select class="rounded fw-bold nav-link text-black justify-content-center " id="userSelect" onchange="getData(document.getElementById('statusSelect').value, parseInt(this.value))"> <!-- This value refers to the value selected as user -->
               <option value="0">Choose User</option>
               <option value="1">User 1</option>
               <option value="2">User 2</option>

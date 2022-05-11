@@ -31,21 +31,21 @@ function getJsonData(statusValue,userValue) {  //user number and status is given
 // User count is compared to filter the row according to the chosen user(on load, 0 is sent as user)
 function populate(info,statusValue,userValue,position) {
 
-  var i=1;
+  var count=1;
 
   info.forEach((element) => {
 
     if(statusValue == null && userValue == 0) { 
-      var taskRow = buildTableRow(i,element);   
-      i++;
+      var taskRow = buildTableRow(count,element);   
+      count++;
 
     } else if(element.completed == statusValue &&  (element.userId == userValue || userValue == 0) ){
-      var taskRow = buildTableRow(i,element);  
-      i++;
+      var taskRow = buildTableRow(count,element);  
+      count++;
     }else if((element.completed == statusValue || statusValue == null) &&  (element.userId == userValue )){
       console.log(i)
-      var taskRow = buildTableRow(i,element);  
-      i++; 
+      var taskRow = buildTableRow(count,element);  
+      count++; 
     } else {  
       return;
     }
@@ -57,13 +57,13 @@ function populate(info,statusValue,userValue,position) {
 
 
 
-function buildTableRow(i,element) {
+function buildTableRow(count,element) {
 
   let checkValue = element.completed ? "checked" : "" ;
   let disableValue = element.completed ? "disabled" : "" ;
   let checkBox = `<input onchange="fiveTasks(this);" ${disableValue} class="form-check-input" type="checkbox" ${checkValue}>`;
 
-  return `<tr> <th scope="row">${i}</th><td>${element.id}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;  
+  return `<tr> <th scope="row">${count}</th><td>${element.id}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;  
   //<td>${ele.userId}</td>
 }
 
