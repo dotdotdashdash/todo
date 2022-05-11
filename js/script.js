@@ -9,7 +9,7 @@ function signIn(event) {
   var pwd = document.getElementById('pwd').value;
   var signInButton = document.getElementById('signInButton')
 
-  if(uName == "admin" && pwd == 12345) {
+  if(uName.trim() == "admin" && pwd.trim() == 12345) {
     event.preventDefault();
     location.replace("./todo-page.html");
   } else {
@@ -21,7 +21,7 @@ function signIn(event) {
 }
 
 
-//Not very important; included to show the lil alert box at the top of homepage that show up when TO-DO button is clicked
+//Not very important; included to show custom alert box
 var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 var alertTrigger = document.getElementById('liveAlertBtn');
 

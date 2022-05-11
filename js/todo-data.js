@@ -7,7 +7,8 @@ function getJsonData(user) {  //user number is given on function call
       if (this.readyState == 4 && this.status == 200) {
         var data= this.responseText;
         jsonData = JSON.parse(data);
-        populate(jsonData,user);
+        populate(jsonData,user,todoBody);
+        console.log(todoBody)
       }
   };
   xhttp.open("GET", "./resources/todos.json", true);
@@ -15,7 +16,10 @@ function getJsonData(user) {  //user number is given on function call
 }
 
 // User count is compared to filter the row according to the chosen user(on load, 0 is sent as user)
-function populate(info,user) {
+function populate(info,user,position) {
+
+  // position.innerHTML = '<thead><tr> <th scope="col"><h5> Sl. No.</h5></th><th scope="col"><h5>Task Title</h5></th><th scope="col"><h5>Status</h5></th></tr></thead><tbody' ;
+
 
   info.forEach(element => {
     
@@ -26,8 +30,11 @@ function populate(info,user) {
     } else {  
       return;
     }
-    todoBody.innerHTML += taskRow;
+    console.log(taskRow);
+    position.innerHTML += taskRow;
   });
+
+
 }
 
 function buildTableRow(ele) {

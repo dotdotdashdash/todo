@@ -10,17 +10,16 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
 
-  <body onload="getJsonData(0)">
+  <body>
 
     <header>
       <div class="container col-lg-9">
 
         <div class="row">
           <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <div class="col-md-9"></div>
-            <div  class="col-md-3 ">
+            <div  class="col d-flex justify-content-end">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a href="#" class="nav-link active fw-bold " aria-current="page">TO-DO</a></li>
+                  <li class="nav-item"><a  onclick="getJsonData(0)" class="nav-link active fw-bold " aria-current="page">TO-DO</a></li>
                   <li class="nav-item"><a href="./index.html" class="nav-link">Sign Out</a></li>
                 </ul>
             </div>
@@ -71,18 +70,16 @@
         </div> -->
 
         <div class = "col-md-10  bg rounded ">
-          <table class="table  table-striped table-hover ">
+          <table  class="table  table-striped table-hover ">
             <thead>
               <tr>
                 <th scope="col"><h5> Sl. No.</h5></th>
-                <!-- <th scope="col">user</th> -->
                 <th scope="col"><h5>Task Title</h5></th>
                 <th scope="col"><h5>Status</h5></th>
               </tr>
             </thead>
             <tbody id="todoBody">
 
-              <!-- Populate JSON data here using JavaScript-->
 
             </tbody>
           </table>
@@ -91,7 +88,7 @@
 
     </div>
 
-    <footer class="bg-dark bg-gradient text-center text-white">
+    <footer class="bg-dark bg-gradient text-center text-white ">
 
       <!-- Grid container -->
       <div class="container px-4 py-3">
