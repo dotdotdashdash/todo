@@ -47,3 +47,18 @@ function alertBox(message, type, position,callToClose) {
 function closeAlertBox(position) {
   position.removeChild(position.lastChild);
 }
+
+//Show-hide password
+function showPassword() {
+  let userPass = document.getElementById("pwd");
+  let viewPass = document.getElementById("viewPass");
+  if ((userPass.type === "password") && !(userPass.value == "")) {
+      viewPass.classList.remove("fa-eye");
+      viewPass.classList.add("fa-eye-slash");
+      userPass.type = "text";
+  } else {
+      viewPass.classList.remove("fa-eye-slash");
+      viewPass.classList.add("fa-eye");
+      userPass.type = "password";
+  }
+}
