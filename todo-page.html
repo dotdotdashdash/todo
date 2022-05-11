@@ -38,6 +38,7 @@
 
       <div class="row">
         <h3  class="display-5 d-flex fw-bold justify-content-center">Tasks</h3>
+        <div id="toHide" class="text-center">(Click the <strong>TO-DO</strong> button on Navigation bar to view your tasks)</div>
       </div>
       <br>
       <div class="row gx-5 d-flex justify-content-center">
@@ -70,7 +71,7 @@
         </div> -->
 
         <div class = "col-md-10  bg rounded ">
-          <table  class="table  table-striped table-hover ">
+          <table style="visibility: hidden;"  class="table  table-striped table-hover" id="table">
             <thead>
               <tr>
                 <th scope="col"><h5> Sl. No.</h5></th>
@@ -80,6 +81,7 @@
             </thead>
             <tbody id="todoBody">
 
+              <!-- Populate json data here -->
 
             </tbody>
           </table>

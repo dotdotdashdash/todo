@@ -1,12 +1,17 @@
 function getJsonData(user) {  //user number is given on function call
 
   var todoBody = document.getElementById("todoBody");
+  var toHide = document.getElementById("toHide");
+  var table = document.getElementById("table");
   todoBody.innerHTML = '';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+      if (this.readyState == 4 && this.status == 200) {        
+        table.style.visibility = "visible";
+        toHide.style.visibility = "hidden";
         var data= this.responseText;
         jsonData = JSON.parse(data);
+
         populate(jsonData,user,todoBody);
         console.log(todoBody)
       }
