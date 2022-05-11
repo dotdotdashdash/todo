@@ -1,4 +1,13 @@
-function getJsonData(user) {  //user number is given on function call
+function getData(statusValue, userValue) {
+
+  statusValue = (statusValue == "null") ? null : (statusValue === "true")
+
+
+  getJsonData(statusValue,userValue) 
+
+}
+
+function getJsonData(statusValue,userValue) {  //user number is given on function call
 
   var todoBody = document.getElementById("todoBody");
   var toHide = document.getElementById("toHide");
@@ -12,8 +21,8 @@ function getJsonData(user) {  //user number is given on function call
         var data= this.responseText;
         jsonData = JSON.parse(data);
 
-        populate(jsonData,user,todoBody);
-        console.log(todoBody)
+        populate(jsonData,statusValue,userValue,todoBody);
+        // console.log(todoBody)
       }
   };
   xhttp.open("GET", "./resources/todos.json", true);
@@ -21,26 +30,33 @@ function getJsonData(user) {  //user number is given on function call
 }
 
 // User count is compared to filter the row according to the chosen user(on load, 0 is sent as user)
-function populate(info,user,position) {
+function populate(info,statusValue,userValue,position) {
 
-  // position.innerHTML = '<thead><tr> <th scope="col"><h5> Sl. No.</h5></th><th scope="col"><h5>Task Title</h5></th><th scope="col"><h5>Status</h5></th></tr></thead><tbody' ;
-
+  
+  // console.log("populate:",statusValue,userValue, typeof statusValue, typeof userValue);
 
   info.forEach(element => {
+
+    // console.log("forEach:", element.completed == statusValue, element.completed , statusValue );
     
-    if(user == 0) { 
+    if(statusValue == null && userValue == 0) { 
+      // console.log("ifloop:",element.completed, element.userId);
       var taskRow = buildTableRow(element);   
-    } else if(user == element.userId) {
+
+    } else if(element.completed == statusValue &&  (element.userId == userValue || userValue == 0) ){
+      // console.log("elseif:",element.completed,element.userId);
       var taskRow = buildTableRow(element);  
     } else {  
+      // console.log("else:",element.completed,element.userId);
       return;
     }
-    console.log(taskRow);
+    // console.log(taskRow);
     position.innerHTML += taskRow;
   });
 
-
 }
+
+
 
 function buildTableRow(ele) {
 
