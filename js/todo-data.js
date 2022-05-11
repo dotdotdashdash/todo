@@ -7,7 +7,7 @@ function getData(statusValue, userValue) {
 
 }
 
-function getJsonData(statusValue,userValue) {  //user number is given on function call
+function getJsonData(statusValue,userValue) {  //user number and status is given on function call
 
   var todoBody = document.getElementById("todoBody");
   var toHide = document.getElementById("toHide");
@@ -22,7 +22,6 @@ function getJsonData(statusValue,userValue) {  //user number is given on functio
         jsonData = JSON.parse(data);
 
         populate(jsonData,statusValue,userValue,todoBody);
-        // console.log(todoBody)
       }
   };
   xhttp.open("GET", "./resources/todos.json", true);
@@ -32,25 +31,25 @@ function getJsonData(statusValue,userValue) {  //user number is given on functio
 // User count is compared to filter the row according to the chosen user(on load, 0 is sent as user)
 function populate(info,statusValue,userValue,position) {
 
-  
-  // console.log("populate:",statusValue,userValue, typeof statusValue, typeof userValue);
+  var i=1;
 
-  info.forEach(element => {
+  info.forEach((element) => {
 
-    // console.log("forEach:", element.completed == statusValue, element.completed , statusValue );
-    
     if(statusValue == null && userValue == 0) { 
-      // console.log("ifloop:",element.completed, element.userId);
-      var taskRow = buildTableRow(element);   
+      var taskRow = buildTableRow(i,element);   
+      i++;
 
     } else if(element.completed == statusValue &&  (element.userId == userValue || userValue == 0) ){
-      // console.log("elseif:",element.completed,element.userId);
-      var taskRow = buildTableRow(element);  
+      var taskRow = buildTableRow(i,element);  
+      i++;
+    }else if((element.completed == statusValue || statusValue == null) &&  (element.userId == userValue )){
+      console.log(i)
+      var taskRow = buildTableRow(i,element);  
+      i++; 
     } else {  
-      // console.log("else:",element.completed,element.userId);
       return;
     }
-    // console.log(taskRow);
+
     position.innerHTML += taskRow;
   });
 
@@ -58,13 +57,14 @@ function populate(info,statusValue,userValue,position) {
 
 
 
-function buildTableRow(ele) {
+function buildTableRow(i,element) {
 
-  let checkValue = ele.completed ? "checked" : "" ;
-  let disableValue = ele.completed ? "disabled" : "" ;
+  let checkValue = element.completed ? "checked" : "" ;
+  let disableValue = element.completed ? "disabled" : "" ;
   let checkBox = `<input onchange="fiveTasks(this);" ${disableValue} class="form-check-input" type="checkbox" ${checkValue}>`;
 
-  return `<tr> <th scope="row">${ele.id}</th><td>${ele.title}</td><td>${checkBox}</td></tr>` ;  //<td>${ele.userId}</td>
+  return `<tr> <th scope="row">${i}</th><td>${element.id}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;  
+  //<td>${ele.userId}</td>
 }
 
 var completionCount = 0;
