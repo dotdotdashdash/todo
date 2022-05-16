@@ -10,16 +10,16 @@ function getData(statusValue,userValue) {  //user number and status is given on 
   todoBody.innerHTML = '';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {        
-        table.style.visibility = "visible";
-        toHide.style.visibility = "hidden";
-        var data= this.responseText;
-        jsonData = JSON.parse(data);
+    if (this.readyState == 4 && this.status == 200) {        
+      table.style.visibility = "visible";
+      toHide.style.visibility = "hidden";
+      var data= this.responseText;
+      jsonData = JSON.parse(data);
 
-        populate(jsonData,statusValue,userValue,todoBody);
-      }
+      populate(jsonData,statusValue,userValue,todoBody);
+    }
   };
-  xhttp.open("GET", "./resources/todos.json", true);
+  xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos", true);
   xhttp.send();
 }
 
