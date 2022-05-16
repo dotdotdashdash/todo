@@ -1,13 +1,8 @@
-function getData(statusValue, userValue) {
 
-  statusValue = (statusValue == "null") ? null : (statusValue === "true")
+function getData(statusValue,userValue) {  //user number and status is given on function call
 
-
-  getJsonData(statusValue,userValue) 
-
-}
-
-function getJsonData(statusValue,userValue) {  //user number and status is given on function call
+  // to send null or boolean true-false on receiving string null-true-false
+  statusValue = (statusValue == "null") ? null : (statusValue === "true") 
 
   var todoBody = document.getElementById("todoBody");
   var toHide = document.getElementById("toHide");
@@ -28,7 +23,7 @@ function getJsonData(statusValue,userValue) {  //user number and status is given
   xhttp.send();
 }
 
-// User count is compared to filter the row according to the chosen user(on load, 0 is sent as user)
+// User count and completiion status is compared to filter the row according to the chosen filter(by default, 0 is sent as user and null is sent as status)
 function populate(info,statusValue,userValue,position) {
 
   var count=1;
@@ -43,7 +38,6 @@ function populate(info,statusValue,userValue,position) {
       var taskRow = buildTableRow(count,element);  
       count++;
     }else if((element.completed == statusValue || statusValue == null) &&  (element.userId == userValue )){
-      console.log(i)
       var taskRow = buildTableRow(count,element);  
       count++; 
     } else {  
@@ -57,13 +51,15 @@ function populate(info,statusValue,userValue,position) {
 
 
 
+
+
 function buildTableRow(count,element) {
 
   let checkValue = element.completed ? "checked" : "" ;
   let disableValue = element.completed ? "disabled" : "" ;
   let checkBox = `<input onchange="fiveTasks(this);" ${disableValue} class="form-check-input" type="checkbox" ${checkValue}>`;
 
-  return `<tr> <th scope="row">${count}</th><td>${element.id}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;  
+  return `<tr> <th scope="row">${count}</th><td>${element.userId}</td><td>${element.id}</td><td>${element.title}</td><td>${checkBox}</td></tr>` ;  
   //<td>${ele.userId}</td>
 }
 
